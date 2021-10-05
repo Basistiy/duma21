@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+    <p class="m-2">На диаграмме ниже показан результат выборов в госдуму, которые прошли 17 - 19 сентября. Можно убрать из финального подсчета участки с явкой выше заданной. </p>
+
+    <form class="m-2" action="" method="post">
+        {% csrf_token %}
+        <p>Максимальную явку можно задать в этой форме:</p>
+        {{ form }}
+        <input class="btn btn-secondary" type="submit" value="Рассчитать">
+    </form>
+
+    <p>{{ graph|safe }}</p>
+
+    <p class="m-2">В этом разделе можно построить график зависимости результатов выборов по участкам в зависимости от
+        явки для партии "КПРФ" И "Единая Россия"</p>
+    <p class="m-2">Выбарите регион:</p>
+
+    {% for region in regions %}
+        <p class="m-2"><a href="{% url 'tikPlot:region' region.id %}">{{ region.name }}</a></p>
+    {% endfor %}
+{% endblock %}

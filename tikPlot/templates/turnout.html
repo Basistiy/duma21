@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+    <p>{{ data|safe }}</p>
+
+    <table class="table m-3">
+        <thead>
+        <tr>
+            <th scope="col">Участок</th>
+            <th scope="col">Явка</th>
+            <th scope="col">КПРФ</th>
+            <th scope="col">Единая Россия</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for row in table %}
+            <tr>
+                <td>{{ row.name }}</td>
+                <td>{{ row.turnout }}</td>
+                <td>{{ row.kprf }}</td>
+                <td>{{ row.er }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

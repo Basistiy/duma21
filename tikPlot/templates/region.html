@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+<p class="m-2">Выбарите территориальную избирательную комиссию:</p>
+
+{% block content %}
+    {% for tik in tiks %}
+        <p><a href="{% url 'tikPlot:tik' tik.id %}">{{ tik.name }}</a></p>
+    {% endfor %}
+{% endblock %}
+
